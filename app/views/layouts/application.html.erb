@@ -11,6 +11,76 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="app">
+      <div class="layout">
+        <!-- Header START -->
+        <div class="header">
+          <span class="font-size-22 m-t-10 m-l-20">
+            <%= image_tag "logo.png", height: "50", alt: "Logo" %>
+          </span>
+        </div>
+        <!-- Header END -->
+
+        <!-- Side Nav START -->
+        <div data-controller="nav" class="side-nav">
+          <div class="side-nav p-l-20 p-t-20">
+            <div class="side-nav-inner">
+              <ul class="side-nav-menu scrollable ps-container ps-theme-default">
+                <li class="nav-item dropdown">
+                  <%= link_to root_path do %>
+                    <span class="icon-holder">
+                      <i class="anticon anticon-dashboard"></i>
+                    </span>
+                    <span class="title">Dashboard</span>
+                  <% end %>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="dropdown-toggle" data-action="click->nav#toggle">
+                    <span class="icon-holder">
+                      <i class="anticon anticon-pie-chart"></i>
+                    </span>
+                    <span class="title">Domains</span>
+                    <span class="arrow">
+                      <i class="arrow-icon"></i>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <p class="text-center">Please add a domain.</p>
+                  </ul>
+                </li>
+                <li class="text-center">
+                  <a href="" class="btn btn-primary btn-tone hover:text-white m-r-20 m-t-20">Add Domain</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Side Nav END -->
+
+        <!-- Page Container START -->
+        <div class="page-container">
+
+          <!-- Content Wrapper START -->
+          <div class="main-content">
+            <%= yield %>
+          </div>
+          <!-- Content Wrapper END -->
+
+          <!-- Footer START -->
+          <footer class="footer">
+            <div class="footer-content">
+              <p class="m-b-0">Copyright © 2023. All rights reserved.</p>
+              <span>
+                <a href="" class="text-gray m-r-15">Term &amp; Conditions</a>
+                <a href="" class="text-gray">Privacy &amp; Policy</a>
+              </span>
+            </div>
+          </footer>
+          <!-- Footer END -->
+
+        </div>
+        <!-- Page Container END -->
+      </div>
+    </div>
   </body>
 </html>
