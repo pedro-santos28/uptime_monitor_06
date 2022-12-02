@@ -1,0 +1,10 @@
+<h1>Add a new domain</h1>
+
+<%= form_with model: @domain do |f| %>
+  <div class="col-auto">
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="col-auto">
+    <%= f.submit "Save", class: "btn btn-primary btn-tone" %>
+  </div>
+<% end %>
