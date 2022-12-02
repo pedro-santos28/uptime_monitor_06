@@ -45,7 +45,13 @@
                     </span>
                   </a>
                   <ul class="dropdown-menu">
-                    <p class="text-center">Please add a domain.</p>
+                    <% if @domains.empty? %>
+                      <p class="text-center">Please add a domain.</p>
+                    <% else %>
+                      <% @domains.each do |domain| %>
+                        <li><%= link_to domain.name, domain_path(domain) %></li>
+                      <% end %>
+                    <% end %>
                   </ul>
                 </li>
                 <li class="text-center">
