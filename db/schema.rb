@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_090201) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_081216) do
   create_table "domains", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "monitoring", default: false
   end
 
+  create_table "pings", force: :cascade do |t|
+    t.integer "domain_id", null: false
+    t.integer "response_time"
+    t.boolean "alive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain_id"], name: "index_pings_on_domain_id"
+  end
+
+  add_foreign_key "pings", "domains"
 end

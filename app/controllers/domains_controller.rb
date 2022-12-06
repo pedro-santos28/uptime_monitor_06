@@ -14,6 +14,14 @@ class DomainsController < ApplicationController
   end
 
   def update
+    @domain = Domain.find(params[:id])
+
+    if @domain.update_attribute(:monitoring, params[:domain][:monitor])
+      MonitorJob.perform_later(@domain)
+      flash[:notice] = "Monitoring #{@domain.name}"
+    else
+      flash[:alert] = "Monitoring failed!"
+    end
   end
 
   def show
